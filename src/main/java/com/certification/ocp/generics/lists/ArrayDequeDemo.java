@@ -11,7 +11,7 @@ public class ArrayDequeDemo {
 
         // ArrayDeque is a resizable array implementation of the Deque interface supporting insertion removal and retrieval of elements at both ends
         // ArrayDeque have no capacity restrictions
-        // default constructor hols 16 elements, you can override the number using the ArrayDeque(int size) constructor, you can also pass a collection
+        // default constructor holds 16 elements, you can override the number using the ArrayDeque(int size) constructor, you can also pass a collection
         // ArrayDeque does not define any method of its own all methods are from its Deque interface of AbstractCollection (because ArrayDeque extends AbstractCollection but it's not our subject here)
 
         ArrayDeque<String> arrayDeque = new ArrayDeque<>(Arrays.asList("C", "D", "E"));
@@ -52,13 +52,16 @@ public class ArrayDequeDemo {
         System.out.println(arrayDeque.offer("Z"));  // offer last
         print(arrayDeque);
 
+        // the most of the methods here calls each other, example : offerFirst calls addFirst so check the implementation
+        // the difference between get , peek and poll is : if deque empty : poll and peek -> returns null | get throws NoSuchElementException
+
         Iterator<String> iterator = arrayDeque.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             System.out.print(iterator.next());
         }
         System.out.println();
         iterator = arrayDeque.descendingIterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             System.out.print(iterator.next());
         }
     }

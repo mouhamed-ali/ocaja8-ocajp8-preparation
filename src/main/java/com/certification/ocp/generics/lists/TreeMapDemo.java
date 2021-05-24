@@ -27,28 +27,26 @@ public class TreeMapDemo {
         treeMap.remove(73, "SEVENTY-THREE");    // removes 73 only if its current value is SEVENTY-THREE
         print(treeMap);
 
-        System.out.printf("%nTree set contains key 3 : %s and contains the value NINE : %s%n", treeMap.containsKey(3), treeMap.containsValue("NINE"));
+        System.out.printf("%nTree set contains key 3 : %s and contains the value NINE : %s", treeMap.containsKey(3), treeMap.containsValue("NINE"));
+        System.out.printf("%n ------------- %n");
 
         // entry set ; key set and values
-        treeMap.entrySet().forEach((entry)-> System.out.printf("%d -> %s , ", entry.getKey() , entry.getValue()));  // a set of Map.Entry
-        System.out.println();
-        treeMap.keySet().forEach((key)-> System.out.printf("%d , ", key));  // a set of integer
-        System.out.println();
-        treeMap.values().forEach((value)-> System.out.printf("%s , ", value));  // a collection of string
+        treeMap.entrySet().forEach((entry) -> System.out.printf("%d -> %s , ", entry.getKey(), entry.getValue()));  // a set of Map.Entry
+        System.out.printf("%n ------------- %n");
+        treeMap.keySet().forEach((key) -> System.out.printf("%d , ", key));  // a set of integer
+        System.out.printf("%n ------------- %n");
+        treeMap.values().forEach((value) -> System.out.printf("%s , ", value));  // a collection of string
+        System.out.printf("%n ------------- %n");
 
-        System.out.printf("%n\t---------------------------------------- %n");
-
-        print(treeMap.ceilingEntry(5)); // shows 5 entry
-        print(treeMap.higherEntry(5)); // strictly greater shows 9 entry
-
-        print(treeMap.floorEntry(73)); // shows 73 entry
-        print(treeMap.lowerEntry(73)); // strictly lower shows 10 entry
+        System.out.printf("* Ceiling : %s%n", treeMap.ceilingEntry(5)); // shows 5 entry
+        System.out.printf("* Ceiling Key : %s%n", treeMap.ceilingKey(5)); // shows 5 key
+        System.out.printf("* Higher : %s%n", treeMap.higherEntry(5)); // strictly greater shows 9 entry
+        System.out.printf("* Floor : %s%n", treeMap.floorEntry(73)); // shows 73 entry
+        System.out.printf("* Lower : %s%n", treeMap.lowerEntry(73)); // strictly lower shows 10 entry
 
         print(treeMap.descendingMap());
-    }
-
-    private static void print(Map.Entry<Integer, String> entry) {
-        System.out.println(entry.getKey() + " > " + entry.getValue());
+        print(treeMap.tailMap(10));
+        print(treeMap.headMap(5));
     }
 
     private static void print(Map<? extends Number, ? extends CharSequence> map) {
@@ -56,6 +54,5 @@ public class TreeMapDemo {
         map.forEach(
                 (k,v) -> System.out.printf("Key : %2s , Value:  %-9s %n", k,v)
         );
-        System.out.printf("\t---------------------------------------- %n");
     }
 }

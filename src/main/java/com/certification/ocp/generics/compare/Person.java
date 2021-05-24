@@ -1,18 +1,13 @@
 package com.certification.ocp.generics.compare;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 @AllArgsConstructor
-@Setter
-@Getter
-@ToString
+@Data
 public class Person implements Comparable<Person> {
     // if you don't use the Person parameter (like Person implements Comparable) you have to provide an implementation of the abstract method
     // public int compareTo(Object o) {}
@@ -22,6 +17,7 @@ public class Person implements Comparable<Person> {
 
     @Override
     public int compareTo(Person o) {
+        // sort by name asc and age desc
         int result = name.compareTo(o.getName());
         return result != 0 ? result : o.age - age;
     }
@@ -30,26 +26,31 @@ public class Person implements Comparable<Person> {
     public static void main(String[] args) {
 
         List<Person> persons = Arrays.asList(
-                new Person("Daniel", 23) ,
-                new Person("David", 53) ,
+                new Person("Daniel", 23),
+                new Person("David", 53),
+                new Person("Zhuang ", 12),
+                new Person("Abel ", 18),
                 new Person("Daniel", 38)
         );
+        // when using tree set, if you don't implement the comparable (and even if the compareTo exists) you'll have an exception
+        // java.lang.ClassCastException ; Person cannot be cast to java.lang.Comparable
         Set<Person> personsSet = new TreeSet<>(persons);
         personsSet.forEach(System.out::println);
+        // be careful, the comparators in the tree set will not be only used to sort but in all other operations. for example, if you try to add an
+        // existing element it will be ignored
+
+        System.out.println("----------------------------------------");
 
         // using comparator; you can use a lambda instead of the anonymous class
         Collections.sort(persons, new Comparator<Person>() {
             @Override
             public int compare(Person o1, Person o2) {
+                // sort by name asc and age desc
                 int result = o1.getName().compareTo(o2.getName());
                 return result != 0 ? result : o2.age - o1.age;
             }
         });
-        System.out.println("----------------------------------------");
         persons.forEach(System.out::println);
-
-        // if you don't implement the comparable (and even if the compareTo exists) you'll have an exception
-        // java.lang.ClassCastException ; Person cannot be cast to java.lang.Comparable
 
         System.out.println("----------------------------------------");
         Stream.of(1,5,3,2).sorted((i,j) -> i - j).forEach(i -> System.out.printf("%d , ", i));

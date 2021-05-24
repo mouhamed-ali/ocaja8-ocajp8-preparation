@@ -1,4 +1,4 @@
-package com.certification.ocp.generics;
+package com.certification.ocp.stream.examples;
 
 import java.util.Collection;
 import java.util.stream.Stream;

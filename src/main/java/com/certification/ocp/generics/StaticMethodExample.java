@@ -19,6 +19,7 @@ public class StaticMethodExample<S extends Number, T extends  Number> {
 
     public static <U extends Number, V extends Number> int add(U first, V second){
         // using static methods you have declare generic parameters before using them
+        // there is no relation between static methods parameters and the Object parameters (first and second in this case)
         return first.intValue() + second.intValue();
     }
 
