@@ -19,8 +19,8 @@ public class PrimitiveInterfaces {
 
         // for functions we have three categories
         // IntFunction , LongFunction and DoubleFunction.       R apply(x value);           x is the primitive type (int, long or double)
-        // ToIntFunction , ToLongFunction and ToDoubleFunction. x applyAsX(T value);        x is the primitive type; X can be (Integer, Long or Double)
-        // XtoYFunction.                                        y applyAsY(x value);        x is the primitive type; X can be (Integer, Long or Double)
+        // ToIntFunction , ToLongFunction and ToDoubleFunction. x applyAsX(T value);        x is the primitive type; X can be (Int, Long or Double)
+        // XtoYFunction.                                        y applyAsY(x value);        x is the primitive type; Y can be (Int, Long or Double); y can be (int, long or double)
 
         LongFunction<String> longFunction = i -> String.valueOf(i);
         ToIntFunction<String> toIntFunction = s -> s.length();

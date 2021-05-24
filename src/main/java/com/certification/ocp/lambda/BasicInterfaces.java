@@ -40,7 +40,7 @@ public class BasicInterfaces {
         System.out.printf("%n ---------------------------------------- %n%n");
 
         // Supplier interface does not have extra methods
-        Supplier<String> supplier = () -> "This is a supplier";
+        Supplier<String> supplier = () -> "'This is a supplier'";
         String suppName = supplier.get();
         System.out.printf("The supplier name is %s", suppName);
 
