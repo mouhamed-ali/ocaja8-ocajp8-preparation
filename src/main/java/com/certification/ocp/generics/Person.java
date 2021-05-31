@@ -10,6 +10,7 @@ import java.util.List;
 // Bounded type parameters example
 @ToString
 @AllArgsConstructor
+@Setter
 public class Person<S, T extends Number> {
 
     // extends here means any type that extends or implements the second type which is Number (like Long, Integer, Float ...) you can use and subtype of Number or the Number itself
@@ -44,9 +45,11 @@ public class Person<S, T extends Number> {
         // name will be treated as Object and not string in this case. age will be a Number in our case. Try to call getName and getAgeType to check the type
 
         // Person expects a subclass of Number when instantiating so you can't pass a String for example as a second example
+        // the second diamond operator is optional as the compiler can determine types from the passed parameters (to the constructor)
         Person person2 = new Person<String, Long>("David", 25l);
         String name = (String) person2.getName();
         Number age = person2.getAgeType();
+        // Person person2 = new Person<String, Long>(99, 25l);  // this results in compilation error because 99 is not a string
 
         // here is the type safety problem
         Person person3 = new Person<>(99, 25l);
@@ -63,5 +66,6 @@ public class Person<S, T extends Number> {
             System.err.println(e.toString());
         }
         Integer age4 = person4.getAgeType();
+        //Person<String, Integer> person4 = new Person<>(25, 26);   // this results in compilation error because 25 is not a string
     }
 }

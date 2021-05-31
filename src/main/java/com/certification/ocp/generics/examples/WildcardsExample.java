@@ -61,4 +61,12 @@ public class WildcardsExample {
         //list.add(Long.MAX_VALUE);     // compile error
         list.forEach(obj -> System.out.printf("%s , ", obj));
     }
+
+    /*
+    Tip
+    The code below will not compile as we have already the method : public static void print(@NonNull List<?> list)
+    At runtime these three methods will have the same signature : public static void print(List list) which causes the issue
+    public static void print(@NonNull List<Integer> list){}
+    public static void print(@NonNull List<Long> list){}
+     */
 }

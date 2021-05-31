@@ -25,7 +25,7 @@ public class OptionalMethods {
 
         // orElse : returns the contained value if it is present, otherwise returns the given argument
         Optional<String> optional = Optional.of("React");
-        System.out.println(optional.orElse("Java")); // prints React
+        System.out.println(optional.orElse("Java")); // prints React, orElse returns String and not Optional<String>
         optional = Optional.empty();
         System.out.println(optional.orElse("Java")); // prints Java
 
